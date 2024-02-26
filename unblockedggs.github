@@ -1,0 +1,2458 @@
+
+body {
+    font-family: 'Montserrat', Courier, monospace;
+    text-decoration: none;
+    overflow-x: hidden;
+}
+#incomplete, #incompatible {
+	display: none;
+}
+
+/* Widebox */
+@media only screen and (max-width: 850px) {
+    .wide-box h2 {
+        font-size: 22px;
+    }
+    .wide-box p, .wide-box a {
+        font-size: 18px;
+    }
+}
+@media only screen and (min-width: 850px) {
+    .wide-box p, .wide-box a {
+        font-size: 22px;
+    }
+}
+.wide-box {
+    width: 100%;
+    height: auto;
+    background: linear-gradient(#708CA8, #5d7994);
+    padding: 2.5vw 5vw;
+    color: #ffffff;
+    text-align: center;
+}
+.wide-box-seperator {
+    background-color: #ffffff;
+    opacity: .75;
+    height: 2px;
+    width: 50vw;
+    margin: 0 auto;
+}
+
+/* Navbar */
+.nav {
+    background: linear-gradient(to bottom, #708CA8, #5d7994);
+    background-repeat: no-repeat;
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+.nav button {
+    text-align: center;
+    padding: 0.5rem 1rem;
+    margin: 1vw;
+    border-style: none;
+    background-color: transparent;
+    font-size: 2.5vh;
+}
+.nav button a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Montserrat', Courier, monospace;
+    font-weight: bold;
+}
+@media screen and (max-width: 800px) {
+    .nav {
+        flex-wrap: wrap;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .nav button {
+        flex: 1 1 100%;
+        padding: 0.25rem 1rem;
+        margin: 1vh 0;
+        font-size: 2vh;
+    }
+    #mobile-removables, #mobile-removables a {
+        display: none;
+    }
+    .hvr-underline-from-center:before {
+        height: 2px;
+    }
+    .active:before {
+        height: 2px;
+    }
+}
+
+/* Header Image */
+.img-header, .index-img-header {
+    width: 100%;
+}
+@media screen and (max-width: 800px) {
+    .img-header {
+        display: none;
+    }
+    .index-img-header {
+        height: 25vh;
+    }
+}
+
+/* Footer */
+.footer {
+    left: 0;
+    bottom: 0;
+    background-color: #64829e;
+    color: #ffffff;
+    width: 100%;
+    padding: 20px 60px;
+    padding-bottom: 50px;
+    margin-top: 25px;
+    box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.2), 0 -6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+.footer-about {
+    font-size: 16px;
+    padding: 1vh 10vw;
+    padding-bottom: 2vh;
+}
+.footer-link a {
+    text-decoration: none;
+    padding: 5px 10px;
+    color: #eeeeee;
+    border: 1px solid #eeeeee;
+    border-radius: 100px;
+}
+.footer-link a:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+.footer-link {
+    margin-top: 15px;
+    text-align: center;
+}
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 20px 10px;
+        padding-bottom: 40px;
+        font-size: 12px;
+    }
+    .footer-about {
+        padding: 1vh 0;
+        font-size: 10px;
+    }
+}
+// Disables Context (Right-Click) Menu
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+// Update Favicon & Title (ty chatgpt lol)
+window.onload = function() {
+    var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = localStorage.getItem("faviconUrl");
+    document.getElementsByTagName('head')[0].appendChild(link);
+    var storedTitle = localStorage.getItem("title");
+    if (storedTitle) {
+        document.title = storedTitle;
+    }
+}
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--Display-->
+		<title>Project-Hub | Settings</title>
+		<link rel="icon" href="favicon.svg">
+		<!--Stylesheets-->
+		<link rel="stylesheet" href="stylesheet.css">
+		<link rel="stylesheet" href="page_styles/settings.css"> <!--Page-Specific-->
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+		<link rel="stylesheet" href="hover.css"> <!--Hover.CSS Library-->
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"> <!--AOS Library-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<script src="https://kit.fontawesome.com/4139823eac.js" crossorigin="anonymous"></script>
+		<script src="icon_changer.js"></script> 
+		<!--Meta-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--Google Analytics-->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9KJ1XPKLF"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-M9KJ1XPKLF');
+        </script>
+		<!--Scripts-->
+		<script src="startupScript.js"></script>
+	</head>
+	<body>
+		<!--Navbar Start-->
+        <div class="nav" style="display: flex;">
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="1100"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='index.html'"
+                style="cursor:pointer"><a>Home</a></button>
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='games.html'"
+                style="cursor:pointer"><a>Games</a></button>
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="900"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='apps.html'"
+                style="cursor:pointer"><a>Apps</a></button>
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="800"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='contact.html'"
+                style="cursor:pointer"><a>Contact</a></button>
+            <div id="mobile-removables">
+                <button class="hvr-underline-from-center active"
+                    data-aos="fade-down"
+                    data-aos-delay="50"
+                    data-aos-duration="700"
+                    data-aos-easing="ease-in-out"
+                    data-aos-once="true"
+                    onclick="window.location.href='settings.html'"
+                    style="cursor:pointer"><a>Settings</a></button>
+                <button class="hvr-underline-from-center"
+                    data-aos="fade-down"
+                    data-aos-delay="50"
+                    data-aos-duration="600"
+                    data-aos-easing="ease-in-out"
+                    data-aos-once="true"
+                    onclick="window.location.href='https://github.com/unbl0ck/unbl0ck.github.io'"
+                    style="cursor:pointer"><a>GitHub</a></button>
+            </div>
+        </div>
+		<!--Navbar End-->
+
+		<!--Header Image-->
+		<img src="img/header.png" alt="Image couldn't load." class="img-header">
+
+		<!--Tab Changer-->
+		<div class="wide-box" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+		    <h2 style="font-weight:bold;">Favicon Changer</h2>
+		    <center>
+				<button class="icon-btn"><img src="https://i.ibb.co/kDxcVDx/canvas.png" id="favicon-button-1" onclick="updateFavicon(this.id)"></button>
+				<button class="icon-btn"><img src="https://i.ibb.co/YPyTYbJ/google-classroom.png" id="favicon-button-2" onclick="updateFavicon(this.id)"></button>
+				<button class="icon-btn"><img src="https://i.ibb.co/JcgBjC1/google-drive.png" id="favicon-button-3" onclick="updateFavicon(this.id)"></button>
+				<button class="icon-btn"><img src="https://i.ibb.co/n62414w/google-slides.png" id="favicon-button-4" onclick="updateFavicon(this.id)"></button>
+				<button class="icon-btn"><img src="https://i.ibb.co/44MjCj9/google-docs.png" id="favicon-button-5" onclick="updateFavicon(this.id)"></button>
+				<button class="icon-btn"><img src="https://i.ibb.co/5TfSsHK/google-mail.png" id="favicon-button-6" onclick="updateFavicon(this.id)"></button>
+				<button class="icon-btn"><img src="https://i.ibb.co/6XW9nQ6/google.png" id="favicon-button-7" onclick="updateFavicon(this.id)"></button>
+				<button class="icon-btn"><img src="https://i.ibb.co/CKrRjCG/turnitin.png" id="favicon-button-8" onclick="updateFavicon(this.id)"></button><br>
+				<button class="reset-btn" onclick="updateFavicon(this.querySelector('img').id)"><img src="https://i.ibb.co/KW8NVz7/default.png" id="favicon-button-9">Reset</button>
+
+				<!--Tab Name Changer-->
+				<h2 style="font-weight:bold; padding-top: 2vw;">Tab Name Changer</h2>
+				<form>
+					<input class="input-box" type="text" id="newTitle" placeholder="Blank for Default"><br>
+					<button class="reset-btn-text" onclick="changeTitle()">Submit</button>
+				</form>
+		    </center>
+		</div>
+
+		<!--Container for Ads + Table-->
+		<div class="ad-container">
+			<!--Ad Segment Start-->
+			<script>
+				var afg={};afg.u=6328;afg.s=5;
+				document.write("<sc"+"ript src='//js.adforgames.com/cd.js'></sc"+"ript>");
+			</script>
+			<!--Ad Segment End-->
+
+			<table class="w3-center w3-border table" style="background-color: snow; margin-bottom: 4vw; margin-top: 1vw;">
+				<thead>
+					<th>Game Name</th>
+					<th>Source</th>
+					<th>Game Name</th>
+					<th>Source</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td><a href="https://github.com/ozh/cookieclicker">Cookie Clicker</a></td>
+						<td><a href="https://github.com/ozh/cookieclicker">ozh (GitHub)</a></td>
+						<td><a href="https://github.com/ObjectifLibre/2048">2048</a></td>
+						<td><a href="https://github.com/ObjectifLibre/2048">ObjectifLibre (GitHub)</a></td>
+					</tr>
+					<tr>
+						<td><a href="https://github.com/robertkleffner/mariohtml5">Mario</a></td>
+						<td><a href="https://github.com/robertkleffner/mariohtml5">robertkleffner (GitHub)</a></td>
+						<td><a href="https://github.com/noanonoa/flappy-bird">Flappy Bird</a></td>
+						<td><a href="https://github.com/noanonoa/flappy-bird">noanonoa (GitHub)</a></td>
+					</tr>
+					<tr>
+						<td>World's Hardest Game</td>
+						<td>Stephen Critoph</td>
+						<td>The Impossible Quiz</td>
+						<td>Splapp-Me-Do</td>
+					</tr>
+					<tr>
+						<td>Breaking The Bank</td>
+						<td>PuffballsUnited</td>
+						<td>Escaping The Prison</td>
+						<td>PuffballsUnited</td>
+					</tr>
+					<tr>
+						<td>Stealing The Diamond</td>
+						<td>PuffballsUnited</td>
+						<td>Infiltrating The Airship</td>
+						<td>PuffballsUnited</td>
+					</tr>
+					<tr>
+						<td>Fleeing The Complex</td>
+						<td>PuffballsUnited</td>
+						<td><a href="https://github.com/cgolden15/Slope-Game">Slope</a></td>
+						<td><a href="https://github.com/cgolden15/Slope-Game">cgolden15 (GitHub)</a></td>
+					</tr>
+					<tr>
+						<td>Riddle School 1</td>
+						<td>Jonochrome</td>
+						<td>Riddle School 2</td>
+						<td>Jonochrome</td>
+					</tr>
+					<tr>
+						<td>Riddle School 3</td>
+						<td>Jonochrome</td>
+						<td>Riddle School 4</td>
+						<td>Jonochrome</td>
+					</tr>
+					<tr>
+						<td>Riddle School 5</td>
+						<td>Jonochrome</td>
+						<td>Riddle Transfer 1</td>
+						<td>Jonochrome</td>
+					</tr>
+					<tr>
+						<td>Riddle Transfer 2</td>
+						<td>Jonochrome</td>
+						<td><a href="https://github.com/jeroenverfallie/ggo13-transcube">Transcube</a></td>
+						<td><a href="https://github.com/jeroenverfallie/ggo13-transcube">jeroenverfallie (GitHub)</a></td>
+					</tr>
+					<tr>
+						<td><a href="https://classic.minecraft.net/">Minecraft: Classic</a></td>
+						<td><a href="https://classic.minecraft.net/">Mojang Studios (Minecraft.Net)</a></td>
+						<td>MotoX3M</td>
+						<td>MadPuffers</td>
+					</tr>
+					<tr>
+						<td>MotoX3M 2</td>
+						<td>MadPuffers</td>
+						<td>Pokemon: Fire Red</td>
+						<td>GameFreak & Nintendo</td>
+					</tr>
+					<tr>
+						<td>Pokemon: Emerald</td>
+						<td>GameFreak & Nintendo</td>
+						<td>Monopoly</td>
+						<td>HasBro & Atari</td>
+					</tr>
+					<tr>
+						<td>Spyro Adventure</td>
+						<td>Digital Eclipse</td>
+						<td>Street Fighter 2</td>
+						<td>Capcom</td>
+					</tr>
+					<tr>
+						<td>Subway Surfers</td>
+						<td>Sybo</td>
+						<td>Google Dino</td>
+						<td>Google</td>
+					</tr>
+					<tr>
+						<td>FNaF 4</td>
+						<td>Scott Cawthon</td>
+						<td>Crossy Road</td>
+						<td>Hipster Whale</td>
+					</tr>
+					<tr>
+						<td>Cut the Rope</td>
+						<td>ZeptoLab</td>
+						<td>Stack</td>
+						<td>Crazy Bulk</td>
+					</tr>
+					<tr>
+						<td>Duck Life 1/2/3/4</td>
+						<td>Wix Games</td>
+						<td>Super Mario 64</td>
+						<td>Nintendo</td>
+					</tr>
+					<tr>
+						<td>Learn to Fly 1/2</td>
+						<td>Light Bringer Games</td>
+					</tr>
+					<tr id="incomplete">
+						<td>GameName</td>
+						<td>Author</td>
+						<td>GameName</td>
+						<td>Author</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<!--Ad Segment Start-->
+			<script>
+				var afg={};afg.u=6328;afg.s=5;
+				document.write("<sc"+"ript src='//js.adforgames.com/cd.js'></sc"+"ript>");
+			</script>
+			<!--Ad Segment End-->
+		</div>
+
+		<!--Generalized License-->
+		<center>
+			<h3 style="font-weight:bold;">Copying Rights:</h3>
+			<p>GNU General Public License v3.0</p>
+			<p>As a short summary, you can take any part of this website. However, you must:</p>
+			<p>Credit this site; State all significant changes; Use the same license.</p>
+			<p>Please head to the GitHub page for more info.</p>
+		</center>
+
+		<!--Footer Start-->
+        <footer class="footer">
+			<div class="footer-about">
+			  <p>Welcome to Project Hub, your ultimate destination for tailored unblocked games! With over 60 games and counting, we are committed to providing you with a personalized gaming experience that suits your preferences and interests. Our site is constantly updated with new additions to ensure a fresh and exciting selection of games. We highly value user feedback and actively incorporate it to enhance your gaming journey. Get ready to embark on a thrilling adventure as you explore the world of Project Hub, where every game is tailored to you. Let the fun begin!</p>
+			</div>
+			<p>Christian Santangelo <i class="fa-regular fa-copyright"></i></p>
+			<p>Disclaimer: This site should not be used during school/work, and I am not responsible for the users on this site.</p>
+			<div class="footer-link">
+				<a href="https://github.com/unbl0ck">GitHub Profile</a>
+				<a href="privacy.html">Privacy Notice</a>
+			</div>
+		</footer>
+		<!--Footer End-->
+		
+		<!--Save Favicon & Title-->
+		<script>
+		    function changeTitle() {
+				var newTitle = document.getElementById("newTitle").value;
+				if (newTitle === "") {
+					localStorage.removeItem("title");
+				} else {
+					localStorage.setItem("title", newTitle);
+					document.title = newTitle;
+				}
+
+				window.location.reload();
+		    }
+
+		    function updateFavicon(id) {
+				var faviconUrl = document.getElementById(id).src;
+				localStorage.setItem("faviconUrl", faviconUrl);
+
+				window.location.reload();
+		    }
+		</script>
+
+		<!--AOS Library-->
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+	</body>
+</html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--Display-->
+		<title>Project-Hub | Privacy Policy</title>
+		<link rel="icon" href="favicon.svg">
+		<!--Stylesheets-->
+		<link rel="stylesheet" href="stylesheet.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+		<link rel="stylesheet" href="hover.css"> <!--Hover.CSS Library-->
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"> <!--AOS Library-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<script src="https://kit.fontawesome.com/4139823eac.js" crossorigin="anonymous"></script>
+		<!--Meta-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Google Analytics-->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9KJ1XPKLF"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-M9KJ1XPKLF');
+        </script>
+        <!--Scripts-->
+		<script src="startupScript.js"></script>
+		<!--Styling-->
+		<style>
+		    .privacy-frame {
+                margin: 50px 10vw;
+            }
+            .privacy-frame h1,h2,h3,h4,h5,h6,a,p,ol {
+                font-family: 'Montserrat', Courier, monospace;
+            }
+		</style>
+	</head>
+	<body>
+		<!--Navbar Start-->
+        <div class="nav" style="display: flex;">
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="1100"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='index.html'"
+                style="cursor:pointer"><a>Home</a></button>
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='games.html'"
+                style="cursor:pointer"><a>Games</a></button>
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="900"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='apps.html'"
+                style="cursor:pointer"><a>Apps</a></button>
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="800"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='contact.html'"
+                style="cursor:pointer"><a>Contact</a></button>
+            <div id="mobile-removables">
+                <button class="hvr-underline-from-center"
+                    data-aos="fade-down"
+                    data-aos-delay="50"
+                    data-aos-duration="700"
+                    data-aos-easing="ease-in-out"
+                    data-aos-once="true"
+                    onclick="window.location.href='settings.html'"
+                    style="cursor:pointer"><a>Settings</a></button>
+                <button class="hvr-underline-from-center"
+                    data-aos="fade-down"
+                    data-aos-delay="50"
+                    data-aos-duration="600"
+                    data-aos-easing="ease-in-out"
+                    data-aos-once="true"
+                    onclick="window.location.href='https://github.com/unbl0ck/unbl0ck.github.io'"
+                    style="cursor:pointer"><a>GitHub</a></button>
+            </div>
+        </div>
+		<!--Navbar End-->
+
+		<div class="privacy-frame">
+            <h1 style="font-weight:bold;text-align:center;">Privacy Policy</h1>
+
+            <h2 style="text-align:center;">Project-Hub</h2>
+            <p style="text-align:center;">Thank you for visiting Project-Hub. This privacy policy explains how we collect, use, and protect your personal information when you use our website.</p><hr>
+            
+            <h3>Information We Collect</h3>
+            <p>We place utmost importance on safeguarding your privacy and are committed to ensuring the confidentiality and security of your personal information. As a general principle, we do not collect any personal information unless voluntarily provided by you through our contact form. In the event that you choose to reach out to us using the contact form on our website, we may request and collect your email address solely for the purpose of facilitating effective communication and responding to your inquiries or requests in a timely manner. Rest assured that any personal information you willingly provide will be treated with the highest level of privacy and used strictly within the scope of your interaction with us. We adhere to applicable data protection laws and take appropriate technical and organizational measures to protect the confidentiality, integrity, and availability of your personal information.</p>
+            
+            <h3>How We Use Your Information</h3>
+            <p>The personal information collected through the contact form is used solely for the purpose of responding to your inquiries or requests.</p>
+            
+            <h3>Third-Party Sharing</h3>
+            <p>For the purpose of analytics and enhancing the quality of our services, we may share the personal information you provide through the contact form with Google. This collaboration allows us to gain valuable insights into user interactions, preferences, and trends, enabling us to continually refine and optimize our offerings. Please rest assured that the security and confidentiality of your information are of utmost importance to us, and we take appropriate measures to protect your data throughout this process.</p>
+            
+            <h3>Cookies and Similar Technologies</h3>
+            <p>To ensure a seamless user experience and provide personalized features, we utilize cookies on our website. These cookies, set by Google, serve two primary purposes: saving game data and identifying first-time users. By continuing to use our website, you express your consent to the utilization of these cookies. We value your privacy, and it is essential to note that these cookies do not collect personally identifiable information. You have the option to manage or disable cookies through your browser settings, although it may impact certain functionalities of our website.</p>
+            
+            <h3>Cookie Policy</h3>
+            <p>Our website employs cookies and similar tracking technologies to enhance your browsing experience and perform valuable analyses of website traffic. These technologies, such as cookies, are small files that are stored on your device, enabling us to recognize your preferences and improve the functionality and performance of our website. By using our website, you provide your informed consent for the utilization of these cookies and tracking technologies in accordance with applicable laws and regulations. We handle the information collected through these technologies with the utmost respect for your privacy and solely for the purposes of enhancing your interaction with our website. Please note that you have the option to manage or disable cookies through your browser settings, although doing so may impact certain features or functionalities of our website. For more detailed information about our use of cookies and tracking technologies, please refer to our Cookie Policy.</p>
+            <p>We employ different types of cookies on our website to ensure an optimal browsing experience and provide personalized features. The specific types of cookies we utilize include:</p>
+           
+            <ol>
+                <li>Analytical/Performance Cookies: These cookies play a crucial role in helping us understand how users interact with our website. They collect anonymous information about visitor behavior, such as the pages visited, the duration of the visit, and any error messages encountered. This data enables us to analyze and improve the performance and functionality of our website, enhancing your overall experience.</li>
+                <li>Functional Cookies: These cookies are essential for enabling specific functionalities on our website and remembering your preferences. They allow us to customize your browsing experience based on your previous interactions and selections. Functional cookies may, for example, remember your language preference, preferred settings, or items in your shopping cart. By remembering these preferences, we can tailor our website to better suit your needs.</li>
+            </ol>
+            <p>It's important to note that these cookies do not collect personally identifiable information and are solely used for the stated purposes. By continuing to use our website, you consent to the placement of these cookies on your device. You have the option to manage or disable cookies through your browser settings, although please be aware that disabling certain cookies may affect the functionality and performance of our website. For more detailed information about our use of cookies, please refer to our Cookie Policy.</p>
+            
+            <h3>Data Security</h3>
+            <p>The personal information collected through the contact form is securely stored on Google's servers, utilizing industry-standard security measures to safeguard against unauthorized access, loss, or disclosure. We take the protection of your information seriously and employ reasonable administrative, technical, and physical safeguards to ensure its confidentiality and integrity. However, it is important to note that no data transmission or storage method can be entirely guaranteed as 100% secure. While we strive to protect your personal information, we cannot guarantee absolute security. By submitting your information through our contact form, you acknowledge and accept this inherent risk. If you have any concerns regarding the security of your personal information, please contact us directly using the provided contact information.</p>
+            
+            <h3>Data Retention</h3>
+            <p>We will retain the personal information you provide through the contact form for the duration necessary to fulfill the purposes stated in this privacy policy, or as required by applicable laws and regulations. Once the retention period expires, we will securely dispose of or anonymize your personal information in a manner that ensures its confidentiality and prevents unauthorized access. Please note that certain legal obligations or legitimate business purposes may require us to retain certain information for an extended period. However, rest assured that we will only retain your personal information for as long as it is necessary and relevant to fulfill the stated purposes and comply with legal requirements.</p>
+            
+            <h3>User Rights</h3>
+            <p>Depending on the applicable laws and regulations of your state, you may have certain rights regarding the collection and use of your personal information. These rights may include the ability to opt-out of the collection, processing, or disclosure of your personal information for certain purposes. To understand your specific rights and options, we encourage you to refer to the regulations and guidelines established by your state's data protection authority or regulatory body. These resources will provide detailed information on the rights afforded to individuals concerning their personal information and the steps you can take to exercise those rights. Should you have any questions or require further assistance regarding your privacy rights, please do not hesitate to contact us using the provided contact information.</p>
+            
+            <h3>Contact Information</h3>
+            <p>If you have any inquiries, concerns, or require further clarification regarding our privacy policy or data handling practices, we encourage you to reach out to us. You can do so by submitting a contact form through our website at <a href="contact.html">https://unbl0ck.github.io/contact.html</a>. Our dedicated team will diligently review your submission and respond to your queries in a timely manner. We value your feedback and are committed to addressing any concerns you may have to ensure your peace of mind and satisfaction with our privacy practices.</p>
+        </div>
+
+		<!--Footer Start-->
+        <footer class="footer">
+			<div class="footer-about">
+			  <p>Welcome to Project Hub, your ultimate destination for tailored unblocked games! With over 60 games and counting, we are committed to providing you with a personalized gaming experience that suits your preferences and interests. Our site is constantly updated with new additions to ensure a fresh and exciting selection of games. We highly value user feedback and actively incorporate it to enhance your gaming journey. Get ready to embark on a thrilling adventure as you explore the world of Project Hub, where every game is tailored to you. Let the fun begin!</p>
+			</div>
+			<p>Christian Santangelo <i class="fa-regular fa-copyright"></i></p>
+			<p>Disclaimer: This site should not be used during school/work, and I am not responsible for the users on this site.</p>
+			<div class="footer-link">
+				<a href="https://github.com/unbl0ck">GitHub Profile</a>
+				<a href="privacy.html">Privacy Notice</a>
+			</div>
+		</footer>
+        <!--Footer End-->
+        
+		<!--AOS Library-->
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+	</body>
+</html>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Project-Hub</title>
+        <meta charset="UTF-8">
+            <!--Required Scripts-->
+            <script src="IodineGBA/includes/TypedArrayShim.js"></script>
+            <script src="IodineGBA/core/Cartridge.js"></script>
+            <script src="IodineGBA/core/DMA.js"></script>
+            <script src="IodineGBA/core/Emulator.js"></script>
+            <script src="IodineGBA/core/Graphics.js"></script>
+            <script src="IodineGBA/core/RunLoop.js"></script>
+            <script src="IodineGBA/core/Memory.js"></script>
+            <script src="IodineGBA/core/IRQ.js"></script>
+            <script src="IodineGBA/core/JoyPad.js"></script>
+            <script src="IodineGBA/core/Serial.js"></script>
+            <script src="IodineGBA/core/Sound.js"></script>
+            <script src="IodineGBA/core/Timer.js"></script>
+            <script src="IodineGBA/core/Wait.js"></script>
+            <script src="IodineGBA/core/CPU.js"></script>
+            <script src="IodineGBA/core/Saves.js"></script>
+            <script src="IodineGBA/core/sound/FIFO.js"></script>
+            <script src="IodineGBA/core/sound/Channel1.js"></script>
+            <script src="IodineGBA/core/sound/Channel2.js"></script>
+            <script src="IodineGBA/core/sound/Channel3.js"></script>
+            <script src="IodineGBA/core/sound/Channel4.js"></script>
+            <script src="IodineGBA/core/CPU/ARM.js"></script>
+            <script src="IodineGBA/core/CPU/THUMB.js"></script>
+            <script src="IodineGBA/core/CPU/CPSR.js"></script>
+            <script src="IodineGBA/core/graphics/Renderer.js"></script>
+            <script src="IodineGBA/core/graphics/RendererProxy.js"></script>
+            <script src="IodineGBA/core/graphics/BGTEXT.js"></script>
+            <script src="IodineGBA/core/graphics/BG2FrameBuffer.js"></script>
+            <script src="IodineGBA/core/graphics/BGMatrix.js"></script>
+            <script src="IodineGBA/core/graphics/AffineBG.js"></script>
+            <script src="IodineGBA/core/graphics/ColorEffects.js"></script>
+            <script src="IodineGBA/core/graphics/Mosaic.js"></script>
+            <script src="IodineGBA/core/graphics/OBJ.js"></script>
+            <script src="IodineGBA/core/graphics/OBJWindow.js"></script>
+            <script src="IodineGBA/core/graphics/Window.js"></script>
+            <script src="IodineGBA/core/graphics/Compositor.js"></script>
+            <script src="IodineGBA/core/memory/DMA0.js"></script>
+            <script src="IodineGBA/core/memory/DMA1.js"></script>
+            <script src="IodineGBA/core/memory/DMA2.js"></script>
+            <script src="IodineGBA/core/memory/DMA3.js"></script>
+            <script src="IodineGBA/core/cartridge/SaveDeterminer.js"></script>
+            <script src="IodineGBA/core/cartridge/SRAM.js"></script>
+            <script src="IodineGBA/core/cartridge/FLASH.js"></script>
+            <script src="IodineGBA/core/cartridge/EEPROM.js"></script>
+            <script src="user_scripts/XAudioJS/swfobject.js"></script>
+            <script src="user_scripts/XAudioJS/resampler.js"></script>
+            <script src="user_scripts/XAudioJS/XAudioServer.js"></script>
+            <script src="user_scripts/IodineGBAROMLoadGlueCode.js"></script>
+            <script src="user_scripts/IodineGBAJoyPadGlueCode.js"></script>
+            <script src="user_scripts/IodineGBASavesGlueCode.js"></script>
+            <script src="user_scripts/IodineGBAGraphicsGlueCode.js"></script>
+            <script src="user_scripts/IodineGBAAudioGlueCode.js"></script>
+            <script src="user_scripts/IodineGBACoreGlueCode.js"></script>
+            <script src="user_scripts/base64.js"></script>
+            <link rel="stylesheet" href="user_css/main.css">
+            <!--Google Analytics-->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9KJ1XPKLF"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-M9KJ1XPKLF');
+            </script>
+            <!--Google Analytics-->
+    </head>
+    <body>
+        <canvas id="emulator_target" width="240px" height="160px"></canvas>
+        <span id="tempMessage"></span>
+    </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--Display-->
+        <title>Project-Hub | Home</title>
+        <link rel="icon" href="https://i.ibb.co/KW8NVz7/default.png">
+        <link rel="canonical" href="https://unbl0ck.github.io/">
+        <!--Social Media-->
+        <meta property="og:title" content="Project Hub">
+        <meta property="og:description" content="Welcome to Project Hub, your ultimate destination for unblocked games! Dive into our vast collection of 60+ accessible titles, offering endless fun and excitement. Explore a diverse range of genres and experience gaming like never before on our visually stunning and user-friendly platform.">
+        <meta property="og:image" content="https://i.ibb.co/KW8NVz7/default.png">
+        <meta property="og:url" content="https://unbl0ck.github.io/">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Project Hub">
+        <meta name="twitter:description" content="Welcome to Project Hub, your ultimate destination for unblocked games! Dive into our vast collection of 60+ accessible titles, offering endless fun and excitement. Explore a diverse range of genres and experience gaming like never before on our visually stunning and user-friendly platform.">
+        <meta name="twitter:image" content="https://i.ibb.co/KW8NVz7/default.png">
+        <link rel="apple-touch-icon" href="https://unbl0ck.github.io/">
+        <!--Stylesheets-->
+        <link rel="stylesheet" href="stylesheet.css">
+        <link rel="stylesheet" href="page_styles/index.css"> <!--Page-Specific-->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+        <link rel="stylesheet" href="hover.css"> <!--Hover.CSS Library-->
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"> <!--AOS Library-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="https://kit.fontawesome.com/4139823eac.js" crossorigin="anonymous"></script>
+        <!--Meta-->
+        <meta charset="UTF-8">
+        <meta name="language" content="en">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Welcome to Project Hub, your ultimate destination for unblocked games! Dive into our vast collection of 60+ accessible titles, offering endless fun and excitement. Explore a diverse range of genres and experience gaming like never before on our visually stunning and user-friendly platform.">
+        <meta name="keywords" content="unblocked, games, google sites, unblocked games mom, ublocked, project-hub, project, hub, project hub, unbl0ck, github, unbl0ck.github.io, unblock.github.io, unblock, g@mes, unblocked games school">
+        <!--Google Analytics & Adsense-->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9KJ1XPKLF"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-M9KJ1XPKLF');
+        </script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5694462314366035" crossorigin="anonymous"></script>
+        <!--Scripts-->
+		    <script src="startupScript.js"></script>
+    </head>
+    <body>
+          <!--Navbar Start-->
+          <div class="nav" style="display: flex;">
+            <button class="hvr-underline-from-center active"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="1100"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='index.html'"
+                style="cursor:pointer"><a>Home</a></button>
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='games.html'"
+                style="cursor:pointer"><a>Games</a></button>
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="900"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='apps.html'"
+                style="cursor:pointer"><a>Apps</a></button>
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="800"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='contact.html'"
+                style="cursor:pointer"><a>Contact</a></button>
+            <div id="mobile-removables">
+                <button class="hvr-underline-from-center"
+                    data-aos="fade-down"
+                    data-aos-delay="50"
+                    data-aos-duration="700"
+                    data-aos-easing="ease-in-out"
+                    data-aos-once="true"
+                    onclick="window.location.href='settings.html'"
+                    style="cursor:pointer"><a>Settings</a></button>
+                <button class="hvr-underline-from-center"
+                    data-aos="fade-down"
+                    data-aos-delay="50"
+                    data-aos-duration="600"
+                    data-aos-easing="ease-in-out"
+                    data-aos-once="true"
+                    onclick="window.location.href='https://github.com/unbl0ck/unbl0ck.github.io'"
+                    style="cursor:pointer"><a>GitHub</a></button>
+            </div>
+        </div>
+        <!--Navbar End-->
+
+        <!--Header Image-->
+        <img src="img/header.png" alt="Image couldn't load." class="index-img-header">
+
+        <!--Content Start-->
+        <!--Notice Box-->
+        <div class="wide-box" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <h2 style="font-weight:bold;"><i class="fa-solid fa-triangle-exclamation"></i> Important Notice <i class="fa-solid fa-triangle-exclamation"></i></h2>
+            <p>We will soon be displaying user reviews on the front page!</p>
+            <p>If you'd like to appear on the front page, use our form: <a href="https://forms.gle/YZSapScWn58kaVs69">https://forms.gle/YZSapScWn58kaVs69</a>.</p>
+            <div class="wide-box-seperator"></div>
+            <h2>Save Our Sister Sites:</h2>
+            <a href="https://unbl0ck.github.io/" target="_blank">https://unbl0ck.github.io/</a><br>
+            <a href="https://unb1ock.github.io/" target="_blank">https://unb1ock.github.io/</a><br>
+            <a href="https://unb10ck.github.io/" target="_blank">https://unb10ck.github.io/</a><br>
+            <a href="https://ubghub.netlify.app/" target="_blank">https://ubghub.netlify.app/</a><br>
+            <a href="https://ubghub.vercel.app/" target="_blank">https://ubghub.vercel.app/</a><br>
+        </div>
+
+        <!--Ad Segment Start-->
+        <br><center><script>
+          var afg={};afg.u=6328;afg.s=4;
+          document.write("<sc"+"ript src='//js.adforgames.com/cd.js'></sc"+"ript>");
+        </script></center><br>
+        <!--Ad Segment End-->
+
+        <!--Popular Games Showcase-->
+        <center><p class="popular-games-title">Popular Games</p></center>
+        <div class="popular-games">
+          <div onclick="window.location.href = 'cookie/index.html'">
+            <img src="games/img/cookclck.png">
+            <p>Cookie Clicker</p>
+          </div>
+          <div onclick="window.location.href = 'games/bitlife/index.html'">
+            <img src="games/img/bitlife.png">
+            <p>BitLife</p>
+          </div>
+          <div onclick="window.location.href = 'games/thebindingofisaac/index.html'">
+            <img src="games/img/thebindingofisaac.png">
+            <p>The Binding of Isaac</p>
+          </div>
+        </div>
+        
+        <!--Ad Segment Start-->
+        <br><center><script>
+          var afg={};afg.u=6328;afg.s=4;
+          document.write("<sc"+"ript src='//js.adforgames.com/cd.js'></sc"+"ript>");
+        </script></center><br>
+        <!--Ad Segment End-->
+
+        <!--Frequently Asked Questions-->
+        <center class="faq">
+          <p class="popular-games-title">FAQ:</p>
+          <div class="faq-box">
+            <p class="faq-title"><i class="fa-regular fa-circle-question"></i>   Question:</p>
+            <p class="faq-qna">Why are there ads, and is there any way of turning them off?</p>
+            <p class="faq-title"><i class="fa-regular fa-circle-check"></i>   Answer:</p>
+            <p class="faq-qna">Ads are there to simply support the maintaining of this site, and personally supports me, a very broke high school student. As for turning them off, we kindly ask you to not enable ad-blockers of sorts, as ads are not intrusive nor do they affect the site's function.</p>
+          </div>
+          <div class="faq-box">
+            <p class="faq-title"><i class="fa-regular fa-circle-question"></i>   Question:</p>
+            <p class="faq-qna">Where is _____ game?</p>
+            <p class="faq-title"><i class="fa-regular fa-circle-check"></i>   Answer:</p>
+            <p class="faq-qna">Sadly, we aren't able to find and host every game out there. However, if you see a game missing, use our <a href="contact.html">contact form</a> to reach us about what game you are looking for. Sometimes, albeit rarely, there are few games which we cannot host due to Flash/external limitations.</p>
+          </div>
+          <div class="faq-box">
+            <p class="faq-title"><i class="fa-regular fa-circle-question"></i>   Question:</p>
+            <p class="faq-qna">Can you add _____ feature?</p>
+            <p class="faq-title"><i class="fa-regular fa-circle-check"></i>   Answer:</p>
+            <p class="faq-qna">This mostly follows the same principles as our previous answer. If you have a feature that you are wanting to be added, please use our <a href="contact.html">contact form</a> to reach us. Alternatively, you can also visit the <a href="https://github.com/unbl0ck/unbl0ck.github.io">project's GitHub page</a>, and submit an issue.</p>
+          </div>
+        </center>
+        <!--Content End-->
+        
+        <!--Footer Start-->
+        <footer class="footer">
+          <div class="footer-about">
+            <p>Welcome to Project Hub, your ultimate destination for tailored unblocked games! With over 60 games and counting, we are committed to providing you with a personalized gaming experience that suits your preferences and interests. Our site is constantly updated with new additions to ensure a fresh and exciting selection of games. We highly value user feedback and actively incorporate it to enhance your gaming journey. Get ready to embark on a thrilling adventure as you explore the world of Project Hub, where every game is tailored to you. Let the fun begin!</p>
+          </div>
+          <p>Christian Santangelo <i class="fa-regular fa-copyright"></i></p>
+          <p>Disclaimer: This site should not be used during school/work, and I am not responsible for the users on this site.</p>
+          <div class="footer-link">
+              <a href="https://github.com/unbl0ck">GitHub Profile</a>
+              <a href="privacy.html">Privacy Notice</a>
+          </div>
+        </footer>
+        <!--Footer End-->
+        
+        <!--Copy URL (ty chatgpt lol)-->
+        <script>
+            function copyToClipboard(text) {
+              const el = document.createElement('textarea');
+              el.value = text;
+              el.setAttribute('readonly', '');
+              el.style.position = 'absolute';
+              el.style.left = '-9999px';
+              document.body.appendChild(el);
+
+              const selected =
+                  document.getSelection().rangeCount > 0
+                  ? document.getSelection().getRangeAt(0)
+                  : false;
+          
+              el.select();
+              document.execCommand('copy');
+              document.body.removeChild(el);
+
+              if (selected) {
+                  document.getSelection().removeAllRanges();
+                  document.getSelection().addRange(selected);
+              }
+          
+              showCopiedPrompt();
+            }
+        
+            function showCopiedPrompt() {
+              const copiedPrompt = document.createElement('div');
+              copiedPrompt.innerText = 'Copied!';
+              copiedPrompt.className = 'copy-prompt';
+          
+              document.querySelector('.copy-button').classList.add('clicked');
+              document.querySelector('.copy-button').appendChild(copiedPrompt);
+          
+              setTimeout(() => {
+                  copiedPrompt.style.opacity = 0;
+                  setTimeout(() => {
+                  copiedPrompt.parentNode.removeChild(copiedPrompt);
+                  document.querySelector('.copy-button').classList.remove('clicked');
+                  }, 600);
+              }, 2000);
+            }
+        </script>
+        
+        <!--First-Time Popup (ty chatgpt lol)-->
+        <div class="first-time-popup" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.8); display: none;">
+            <div class="alert" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #ffffff; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <h1 style="font-weight: bold;">Project-Hub</h1>
+                <p>By agreeing to this screen and thereby using this website in its entirety, you agree to the following terms:</p>
+                <p class="alert-tos">You are not within a school/learning environment where games are prohited. The owner and/or maintainer of this site is not liable for any emotional or physical damage done to the user. The owner and/or maintainer is not resposible and cannot be held accountable for any user's own actions, and the user is to be held accountable instead.</p>
+                <center>
+                    <button onclick="agree()">Agree</button>
+                </center>
+            </div>
+        </div>
+        <script>
+            if (localStorage.getItem("!firstTimePopupSeen")) {
+                document.getElementById("first-time-popup").style.display = "block";
+            }
+
+            function agree() {
+                localStorage.setItem("firstTimePopupSeen", true);
+                document.getElementById("first-time-popup").style.display = "none";
+            }
+        </script>
+
+        <!--AOS Library-->
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+    </body>
+</html>
+const faviconUrls = {
+  1: 'https://i.ibb.co/kDxcVDx/canvas.png',
+  2: 'https://i.ibb.co/YPyTYbJ/google-classroom.png',
+  3: 'https://i.ibb.co/JcgBjC1/google-drive.png',
+  4: 'https://i.ibb.co/5TfSsHK/google-mail.png',
+  5: 'https://i.ibb.co/n62414w/google-slides.png',
+  6: 'https://i.ibb.co/44MjCj9/google-docs.png',
+  7: 'https://i.ibb.co/6XW9nQ6/google.png',
+  8: 'https://i.ibb.co/CKrRjCG/turnitin.png',
+  9: 'https://i.ibb.co/KW8NVz7/default.png'
+};
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(button => {
+  button.addEventListener('click', event => {
+    const buttonId = event.target.id;
+    const faviconUrl = faviconUrls[buttonId];
+    changeFavicon(faviconUrl);
+  });
+});
+
+function changeFavicon(url) {
+  const favicon = document.querySelector('link[rel="icon"]');
+  favicon.href = url;
+}
+/*!
+ * Hover.css (http://ianlunn.github.io/Hover/)
+ * Version: 2.3.2
+ * Author: Ian Lunn @IanLunn
+ * Author URL: http://ianlunn.co.uk/
+ * Github: https://github.com/IanLunn/Hover
+
+ * Hover.css Copyright Ian Lunn 2017. Generated with Sass.
+ */
+
+  /* Grow Rotate */
+  .hvr-grow-rotate {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+  }
+  .hvr-grow-rotate:hover, .hvr-grow-rotate:focus, .hvr-grow-rotate:active {
+    -webkit-transform: scale(1.1) rotate(4deg);
+    transform: scale(1.1) rotate(4deg);
+  }
+
+  /* Underline From Center */
+  .hvr-underline-from-center {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+  }
+  .hvr-underline-from-center:before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 51%;
+    right: 51%;
+    bottom: 0;
+    background: #ffffff;
+    height: 3px;
+    -webkit-transition-property: left, right;
+    transition-property: left, right;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+  }
+  .hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
+    left: 0;
+    right: 0;
+  }
+  .active:before {
+    content: "";
+    z-index: 1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffff;
+    height: 3px;
+  }
+
+  /* ICONS */
+/* Icon Back */
+.hvr-icon-back {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+.hvr-icon-back .hvr-icon {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-icon-back:hover .hvr-icon, .hvr-icon-back:focus .hvr-icon, .hvr-icon-back:active .hvr-icon {
+  -webkit-transform: translateX(-4px);
+  transform: translateX(-4px);
+}
+
+/* Icon Forward */
+.hvr-icon-forward {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(2px) translateZ(0);
+  transform: perspective(2px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+.hvr-icon-forward .hvr-icon {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-icon-forward:hover .hvr-icon, .hvr-icon-forward:focus .hvr-icon, .hvr-icon-forward:active .hvr-icon {
+  -webkit-transform: translateX(10px);
+  transform: translateX(10px);
+}
+[{
+    "name": "Cookie Clicker",
+    "url": "https://unbl0ck.github.io/cookie/index.html",
+    "image": "https://unbl0ck.github.io/games/img/cookclck.png"
+}, {
+    "name": "2048",
+    "url": "https://unbl0ck.github.io/games/2048/index.html",
+    "image": "https://unbl0ck.github.io/games/img/2048.png"
+}, {
+    "name": "Mario",
+    "url": "https://unbl0ck.github.io/games/mario/index.html",
+    "image": "https://unbl0ck.github.io/games/img/mario.png"
+}, {
+    "name": "Flappy Bird",
+    "url": "https://unbl0ck.github.io/games/flappybird/index.html",
+    "image": "https://unbl0ck.github.io/games/img/flappybird.png"
+}, {
+    "name": "Tetris",
+    "url": "https://unbl0ck.github.io/games/tetris/index.html",
+    "image": "https://unbl0ck.github.io/games/img/tetris.png"
+}, {
+    "name": "World's Hardest Game",
+    "url": "https://unbl0ck.github.io/games/worldshardestgame/index.html",
+    "image": "https://unbl0ck.github.io/games/img/theworldshardestgame.png"
+}, {
+    "name": "The Impossible Quiz",
+    "url": "https://unbl0ck.github.io/games/theimpossiblequiz/index.html",
+    "image": "https://unbl0ck.github.io/games/img/theimpossiblequiz.png"
+}, {
+    "name": "Sonic",
+    "url": "https://unbl0ck.github.io/games/sonic/index.html",
+    "image": "https://unbl0ck.github.io/games/img/sonic.png"
+}, {
+    "name": "Super Mario 63",
+    "url": "https://unbl0ck.github.io/games/supermario63/index.html",
+    "image": "https://unbl0ck.github.io/games/img/supermario63.png"
+}, {
+    "name": "Breaking The Bank",
+    "url": "https://unbl0ck.github.io/games/henrystickmin/breakingthebank/index.html",
+    "image": "https://unbl0ck.github.io/games/img/breakingthebank.png"
+}, {
+    "name": "Escaping The Prison",
+    "url": "https://unbl0ck.github.io/games/henrystickmin/escapingtheprison/index.html",
+    "image": "https://unbl0ck.github.io/games/img/escapingtheprison.png"
+}, {
+    "name": "Stealing The Diamond",
+    "url": "https://unbl0ck.github.io/games/henrystickmin/stealingthediamond/index.html",
+    "image": "https://unbl0ck.github.io/games/img/stealingthediamond.png"
+}, {
+    "name": "Infiltrating The Airship",
+    "url": "https://unbl0ck.github.io/games/henrystickmin/infiltratingtheairship/index.html",
+    "image": "https://unbl0ck.github.io/games/img/infiltratingtheairship.png"
+}, {
+    "name": "Fleeing The Complex",
+    "url": "https://unbl0ck.github.io/games/henrystickmin/fleeingthecomplex/index.html",
+    "image": "https://unbl0ck.github.io/games/img/fleeingthecomplex.png"
+}, {
+    "name": "Slope",
+    "url": "https://unbl0ck.github.io/games/slope/index.html",
+    "image": "https://unbl0ck.github.io/games/img/slope.png"
+}, {
+    "name": "Riddle School 1",
+    "url": "https://unbl0ck.github.io/games/riddleschool/riddleschool1/index.html",
+    "image": "https://unbl0ck.github.io/games/img/riddleschool1.png"
+}, {
+    "name": "Riddle School 2",
+    "url": "https://unbl0ck.github.io/games/riddleschool/riddleschool2/index.html",
+    "image": "https://unbl0ck.github.io/games/img/riddleschool2.png"
+}, {
+    "name": "Riddle School 3",
+    "url": "https://unbl0ck.github.io/games/riddleschool/riddleschool3/index.html",
+    "image": "https://unbl0ck.github.io/games/img/riddleschool3.png"
+}, {
+    "name": "Riddle School 4",
+    "url": "https://unbl0ck.github.io/games/riddleschool/riddleschool4/index.html",
+    "image": "https://unbl0ck.github.io/games/img/riddleschool4.png"
+}, {
+    "name": "Riddle School 5",
+    "url": "https://unbl0ck.github.io/games/riddleschool/riddleschool5/index.html",
+    "image": "https://unbl0ck.github.io/games/img/riddleschool5.png"
+}, {
+    "name": "Riddle Transfer 1",
+    "url": "https://unbl0ck.github.io/games/riddletransfer1/index.html",
+    "image": "https://unbl0ck.github.io/games/img/riddletransfer1.png"
+}, {
+    "name": "Riddle Transfer 2",
+    "url": "https://unbl0ck.github.io/games/riddletransfer2/index.html",
+    "image": "https://unbl0ck.github.io/games/img/riddletransfer2.png"
+}, {
+    "name": "TransCube",
+    "url": "https://unbl0ck.github.io/games/dist/transcube/index.html",
+    "image": "https://unbl0ck.github.io/games/img/transcube.png"
+}, {
+    "name": "Minecraft",
+    "url": "https://unbl0ck.github.io/games/minecraft/index.html",
+    "image": "https://unbl0ck.github.io/games/img/minecraft.png"
+}, {
+    "name": "Run 3",
+    "url": "https://unbl0ck.github.io/games/run3/index.html",
+    "image": "https://unbl0ck.github.io/games/img/run3.png"
+}, {
+    "name": "MotoX3M",
+    "url": "https://unbl0ck.github.io/games/motox3m/index.html",
+    "image": "https://unbl0ck.github.io/games/img/motox3m.png"
+}, {
+    "name": "MotoX3M 2",
+    "url": "https://unbl0ck.github.io/games/motox3m2/index.html",
+    "image": "https://unbl0ck.github.io/games/img/motox3m2.png"
+}, {
+    "name": "Pokemon: Fire Red",
+    "url": "https://unbl0ck.github.io/launcher.html#pokemonred",
+    "image": "https://unbl0ck.github.io/games/img/pokemonfirered.png"
+}, {
+    "name": "Pokemon: Emerald",
+    "url": "https://unbl0ck.github.io/launcher.html#pokemonemerald",
+    "image": "https://unbl0ck.github.io/games/img/pokemonemerald.png"
+}, {
+    "name": "Monopoly",
+    "url": "https://unbl0ck.github.io/launcher.html#monopoly",
+    "image": "https://unbl0ck.github.io/games/img/monopoly.png"
+}, {
+    "name": "Spyro Adventure",
+    "url": "https://unbl0ck.github.io/launcher.html#spyro_adventure",
+    "image": "https://unbl0ck.github.io/games/img/spyroadventure.png"
+}, {
+    "name": "Street Fighter 2",
+    "url": "https://unbl0ck.github.io/launcher.html#super_street_fighter_2_turbo_revival",
+    "image": "https://unbl0ck.github.io/games/img/streetfighter2.png"
+}, {
+    "name": "Bloxors",
+    "url": "https://unbl0ck.github.io/games/bloxorz/index.html",
+    "image": "https://unbl0ck.github.io/games/img/bloxorz.png"
+}, {
+    "name": "Storm The House 2",
+    "url": "https://unbl0ck.github.io/games/stormthehouse2/index.html",
+    "image": "https://unbl0ck.github.io/games/img/stormthehouse2.png"
+}, {
+    "name": "Subway Surfers",
+    "url": "https://unbl0ck.github.io/games/subwaysurfers/index.html",
+    "image": "https://unbl0ck.github.io/games/img/subwaysurfers.png"
+}, {
+    "name": "Google Dino",
+    "url": "https://unbl0ck.github.io/games/googledino/index.html",
+    "image": "https://unbl0ck.github.io/games/img/googledino.png"
+}, {
+    "name": "FNaF 4",
+    "url": "https://unbl0ck.github.io/games/fnaf/fnaf4/index.html",
+    "image": "https://unbl0ck.github.io/games/img/fnaf4.png"
+}, {
+    "name": "Crossy Road",
+    "url": "https://unbl0ck.github.io/games/crossyroad/index.html",
+    "image": "https://unbl0ck.github.io/games/img/crossyroad.png"
+}, {
+    "name": "Cut The Rope",
+    "url": "https://unbl0ck.github.io/games/cuttherope/index.html",
+    "image": "https://unbl0ck.github.io/games/img/cuttherope.png"
+}, {
+    "name": "Stack",
+    "url": "https://unbl0ck.github.io/games/stack/index.html",
+    "image": "https://unbl0ck.github.io/games/img/stack.png"
+}, {
+    "name": "Duck Life 1",
+    "url": "https://unbl0ck.github.io/games/ducklife/ducklife1/index.html",
+    "image": "https://unbl0ck.github.io/games/img/ducklife1.png"
+}, {
+    "name": "Duck Life 2",
+    "url": "https://unbl0ck.github.io/games/ducklife/ducklife2/index.html",
+    "image": "https://unbl0ck.github.io/games/img/ducklife2.png"
+}, {
+    "name": "Duck Life 3",
+    "url": "https://unbl0ck.github.io/games/ducklife/ducklife3/index.html",
+    "image": "https://unbl0ck.github.io/games/img/ducklife3.png"
+}, {
+    "name": "Duck Life 4",
+    "url": "https://unbl0ck.github.io/games/ducklife/ducklife4/index.html",
+    "image": "https://unbl0ck.github.io/games/img/ducklife4.png"
+}, {
+    "name": "Super Mario 64",
+    "url": "https://unbl0ck.github.io/games/supermario64/index.html",
+    "image": "https://unbl0ck.github.io/games/img/supermario64.png"
+}, {
+    "name": "Learn To Fly 1",
+    "url": "https://unbl0ck.github.io/games/learntofly/learntofly1/index.html",
+    "image": "https://unbl0ck.github.io/games/img/learntofly1.png"
+}, {
+    "name": "Learn To Fly 2",
+    "url": "https://unbl0ck.github.io/games/learntofly/learntofly2/index.html",
+    "image": "https://unbl0ck.github.io/games/img/learntofly2.png"
+}, {
+    "name": "Papa's Burgeria",
+    "url": "https://unbl0ck.github.io/games/papas/papasburgeria/index.html",
+    "image": "https://unbl0ck.github.io/games/img/papasburgeria.png"
+}, {
+    "name": "Papa's Freezeria",
+    "url": "https://unbl0ck.github.io/games/papas/papasfreezeria/index.html",
+    "image": "https://unbl0ck.github.io/games/img/papasfreezeria.png"
+}, {
+    "name": "Papa's Pizzeria",
+    "url": "https://unbl0ck.github.io/games/papas/papaspizzeria/index.html",
+    "image": "https://unbl0ck.github.io/games/img/papaspizzeria.png"
+}, {
+    "name": "1v1.LOL",
+    "url": "https://unbl0ck.github.io/games/1v1lol/index.html",
+    "image": "https://unbl0ck.github.io/games/img/1v1lol.png"
+}, {
+    "name": "Bloons TD 5",
+    "url": "https://unbl0ck.github.io/games/bloonstd5/index.html",
+    "image": "https://unbl0ck.github.io/games/img/bloonstd5.png"
+}, {
+    "name": "Fruit Ninja",
+    "url": "https://unbl0ck.github.io/games/fruitninja/index.html",
+    "image": "https://unbl0ck.github.io/games/img/fruitninja.png"
+}, {
+    "name": "Happy Wheels",
+    "url": "https://unbl0ck.github.io/games/happywheels/index.html",
+    "image": "https://unbl0ck.github.io/games/img/happywheels.png"
+}, {
+    "name": "Subway Surfers",
+    "url": "https://unbl0ck.github.io/games/subwaysurfers/index.html",
+    "image": "https://unbl0ck.github.io/games/img/subwaysurfers.png"
+}, {
+    "name": "Paper.io 2",
+    "url": "https://unbl0ck.github.io/games/paperio2/index.html",
+    "image": "https://unbl0ck.github.io/games/img/paperio2.png"
+}, {
+    "name": "The Binding of Isaac",
+    "url": "https://unbl0ck.github.io/games/thebindingofissac/index.html",
+    "image": "https://unbl0ck.github.io/games/img/thebindingofissac.png"
+}, {
+    "name": "Portal: The Flash Version",
+    "url": "https://unbl0ck.github.io/games/portalflash/index.html",
+    "image": "https://unbl0ck.github.io/games/img/portalflash.png"
+}, {
+    "name": "Jetpack Joyride",
+    "url": "https://unbl0ck.github.io/games/jetpackjoyride/index.html",
+    "image": "https://unbl0ck.github.io/games/img/jetpackjoyride.png"
+}, {
+    "name": "BitLife",
+    "url": "https://unbl0ck.github.io/games/bitlife/index.html",
+    "image": "https://unbl0ck.github.io/games/img/bitlife.png"
+}]; 
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--Display-->
+		<title>Project-Hub | Games</title>
+		<link rel="icon" href="favicon.svg">
+		<!--Stylesheets-->
+		<link rel="stylesheet" href="stylesheet.css">
+		<link rel="stylesheet" href="page_styles/games.css"> <!--Page-Specific-->
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+		<link rel="stylesheet" href="hover.css"> <!--Hover.CSS Library-->
+        	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"> <!--AOS Library-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<script src="https://kit.fontawesome.com/4139823eac.js" crossorigin="anonymous"></script>
+		<!--Meta-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--Google Analytics-->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9KJ1XPKLF"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-M9KJ1XPKLF');
+        </script>
+		<!--Scripts-->
+		<script src="startupScript.js"></script>
+		<!--Styling-->
+		<style>
+			/* Ad Segment */
+			.ad-segment {
+				margin: 1vw;
+			}
+		</style>
+	</head>
+	<body>
+		<!--Navbar Start-->
+        <div class="nav" style="display: flex;">
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="1100"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='index.html'"
+                style="cursor:pointer"><a>Home</a></button>
+            <button class="hvr-underline-from-center active"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='games.html'"
+                style="cursor:pointer"><a>Games</a></button>
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="900"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='apps.html'"
+                style="cursor:pointer"><a>Apps</a></button>
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="800"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='contact.html'"
+                style="cursor:pointer"><a>Contact</a></button>
+            <div id="mobile-removables">
+                <button class="hvr-underline-from-center"
+                    data-aos="fade-down"
+                    data-aos-delay="50"
+                    data-aos-duration="700"
+                    data-aos-easing="ease-in-out"
+                    data-aos-once="true"
+                    onclick="window.location.href='settings.html'"
+                    style="cursor:pointer"><a>Settings</a></button>
+                <button class="hvr-underline-from-center"
+                    data-aos="fade-down"
+                    data-aos-delay="50"
+                    data-aos-duration="600"
+                    data-aos-easing="ease-in-out"
+                    data-aos-once="true"
+                    onclick="window.location.href='https://github.com/unbl0ck/unbl0ck.github.io'"
+                    style="cursor:pointer"><a>GitHub</a></button>
+            </div>
+        </div>
+		<!--Navbar End-->
+
+        <!--Header Image-->
+        <img src="img/header.png" alt="Image couldn't load." class="img-header" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin-bottom: 1vw;">
+
+		<!--Ad Segment Start-->
+        <br><center><script>
+			var afg={};afg.u=6328;afg.s=4;
+			document.write("<sc"+"ript src='//js.adforgames.com/cd.js'></sc"+"ript>");
+		</script></center><br>
+		<!--Ad Segment End-->
+
+		<!--Game Library-->
+		<div class="game-grid">
+			<div class="game-item">
+				<a href="cookie/index.html" target="_blank">
+					<img src="games/img/cookclck.png" alt="Cookie Clicker">
+				</a>
+				<a href="cookie/index.html" target="_blank"><strong>Cookie Clicker</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/2048/index.html" target="_blank">
+					<img src="games/img/2048.png" alt="2048">
+				</a>
+				<a href="games/2048/index.html" target="_blank"><strong>2048</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/mario/main.html" target="_blank">
+					<img src="games/img/mario.png" alt="Mario">
+				</a>
+				<a href="games/mario/main.html" target="_blank"><strong>Mario</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/flappybird/index.html" target="_blank">
+					<img src="games/img/flappybird.png" alt="Flappy Bird">
+				</a>
+				<a href="games/flappybird/index.html" target="_blank"><strong>Flappy Bird</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/tetris/tetris.html" target="_blank">
+					<img src="games/img/tetris.png" alt="Tetris">
+				</a>
+				<a href="games/tetris/tetris.html" target="_blank"><strong>Tetris</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/hardestgame/index.html" target="_blank">
+					<img src="games/img/worldshardestgame.png" alt="Worlds Hardest Game">
+				</a>
+				<a href="games/hardestgame/index.html" target="_blank"><strong>Worlds Hardest Game</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/impossiblequiz/index.html" target="_blank">
+					<img src="games/img/impossiblequiz.png" alt="The Impossible Quiz">
+				</a>
+				<a href="games/impossiblequiz/index.html" target="_blank"><strong>The Impossible Quiz</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/sonic/index.html" target="_blank">
+					<img src="games/img/sonic.png" alt="Sonic">
+				</a>
+				<a href="games/sonic/index.html" target="_blank"><strong>Sonic</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/supermario63/index.html" target="_blank">
+					<img src="games/img/supermario63.png" alt="Super Mario 63">
+				</a>
+				<a href="games/supermario63/index.html" target="_blank"><strong>Super Mario 63</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/henrystickmin/breakingthebank/index.html" target="_blank">
+					<img src="games/img/breakingthebank.png" alt="Breaking The Bank">
+				</a>
+				<a href="games/henrystickmin/breakingthebank/index.html" target="_blank"><strong>Breaking The Bank</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/henrystickmin/escapingtheprison/index.html" target="_blank">
+					<img src="games/img/escapingtheprison.png" alt="Escaping The Prison">
+				</a>
+				<a href="games/henrystickmin/escapingtheprison/index.html" target="_blank"><strong>Escaping The Prison</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/henrystickmin/stealingthediamond/index.html" target="_blank">
+					<img src="games/img/stealingthediamond.png" alt="Stealing The Diamond">
+				</a>
+				<a href="games/henrystickmin/stealingthediamond/index.html" target="_blank"><strong>Stealing The Diamond</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/henrystickmin/infiltratingtheairship/index.html" target="_blank">
+					<img src="games/img/infiltratingtheairship.png" alt="Infiltrating The Airship">
+				</a>
+				<a href="games/henrystickmin/infiltratingtheairship/index.html" target="_blank"><strong>Infiltrating The Airship</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/henrystickmin/fleeingthecomplex/index.html" target="_blank">
+					<img src="games/img/fleeingthecomplex.png" alt="Fleeing The Complex">
+				</a>
+				<a href="games/henrystickmin/fleeingthecomplex/index.html" target="_blank"><strong>Fleeing The Complex</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/slope/index.html" target="_blank">
+					<img src="games/img/slope.png" alt="Slope">
+				</a>
+				<a href="games/slope/index.html" target="_blank"><strong>Slope</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/fridaynightfunkin/index.html" target="_blank">
+					<img src="games/img/fridaynightfunkin.png" alt="Friday Night Funkin'">
+				</a>
+				<a href="games/fridaynightfunkin/index.html" target="_blank"><strong>Friday Night Funkin'</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/solitaire/index.html" target="_blank">
+					<img src="games/img/solitaire.png" alt="Solitaire">
+				</a>
+				<a href="games/solitaire/index.html" target="_blank"><strong>Solitaire</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/wordle/index.html" target="_blank">
+					<img src="games/img/wordle.png" alt="Wordle">
+				</a>
+				<a href="games/wordle/index.html" target="_blank"><strong>Wordle</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/riddleschool/riddleschool1/index.html" target="_blank">
+					<img src="games/img/riddleschool1.png" alt="Riddle School 1">
+				</a>
+				<a href="games/riddleschool/riddleschool1/index.html" target="_blank"><strong>Riddle School 1</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/riddleschool/riddleschool2/index.html" target="_blank">
+					<img src="games/img/riddleschool2.png" alt="Riddle School 2">
+				</a>
+				<a href="games/riddleschool/riddleschool2/index.html" target="_blank"><strong>Riddle School 2</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/riddleschool/riddleschool3/index.html" target="_blank">
+					<img src="games/img/riddleschool3.png" alt="Riddle School 3">
+				</a>
+				<a href="games/riddleschool/riddleschool3/index.html" target="_blank"><strong>Riddle School 3</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/riddleschool/riddleschool4/index.html" target="_blank">
+					<img src="games/img/riddleschool4.png" alt="Riddle School 4">
+				</a>
+				<a href="games/riddleschool/riddleschool4/index.html" target="_blank"><strong>Riddle School 4</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/riddleschool/riddleschool5/index.html" target="_blank">
+					<img src="games/img/riddleschool5.png" alt="Riddle School 5">
+				</a>
+				<a href="games/riddleschool/riddleschool5/index.html" target="_blank"><strong>Riddle School 5</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/riddleschool/riddletransfer/index.html" target="_blank">
+					<img src="games/img/riddletransfer1.png" alt="Riddle Transfer 1">
+				</a>
+				<a href="games/riddleschool/riddletransfer/index.html" target="_blank"><strong>Riddle Transfer 1</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/riddleschool/riddletransfer2/index.html" target="_blank">
+					<img src="games/img/riddletransfer2.png" alt="Riddle Transfer 2">
+				</a>
+				<a href="games/riddleschool/riddletransfer2/index.html" target="_blank"><strong>Riddle Transfer 2</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/meatboy/index.html" target="_blank">
+					<img src="games/img/meatboy.png" alt="Meat Boy">
+				</a>
+				<a href="games/meatboy/index.html" target="_blank"><strong>Meat Boy</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/retrobowl/index.html" target="_blank">
+					<img src="games/img/placeholder.png" alt="Retro Bowl">
+				</a>
+				<a href="games/retrobowl/index.html" target="_blank"><strong>Retro Bowl</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/papas/papasburgeria/index.html" target="_blank">
+					<img src="games/img/papasburgeria.png" alt="Papa's Burgeria">
+				</a>
+				<a href="games/papas/papasburgeria/index.html" target="_blank"><strong>Papa's Burgeria</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/papas/papasfreezeria/" target="_blank">
+					<img src="games/img/papasfreezeria.png" alt="Papa's Freezeria">
+				</a>
+				<a href="games/papas/papasfreezeria/" target="_blank"><strong>Papa's Freezeria</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/papas/papaspizzeria/index.html" target="_blank">
+					<img src="games/img/papaspizzeria.png" alt="Papa's Pizzeria">
+				</a>
+				<a href="games/papas/papaspizzeria/index.html" target="_blank"><strong>Papa's Pizzeria</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/papas/papaspancakeria/index.html" target="_blank">
+					<img src="games/img/papaspancakeria.png" alt="Papa's Pancakeria">
+				</a>
+				<a href="games/papas/papaspancakeria/index.html" target="_blank"><strong>Papa's Pancakeria</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/papas/papaspastaria/index.html" target="_blank">
+					<img src="games/img/papaspastaria.png" alt="Papa's Pastaria">
+				</a>
+				<a href="games/papas/papaspastaria/index.html" target="_blank"><strong>Papa's Pastaria</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/papas/papassushiria/index.html" target="_blank">
+					<img src="games/img/placeholder.png" alt="Papa's Sushiria">
+				</a>
+				<a href="games/papas/papassushiria/index.html" target="_blank"><strong>Papa's Sushiria</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/bloonstd5/index.html" target="_blank">
+					<img src="games/img/bloonstd5.png" alt="Bloons TD 5">
+				</a>
+				<a href="games/bloonstd5/index.html" target="_blank"><strong>Bloons TD 5</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/supersmashflash/index.html" target="_blank">
+					<img src="games/img/supersmashflash.png" alt="Super Smash Flash">
+				</a>
+				<a href="games/supersmashflash/index.html" target="_blank"><strong>Super Smash Flash</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/stickmanhook/index.html" target="_blank">
+					<img src="games/img/stickmanhook.png" alt="Stickman Hook">
+				</a>
+				<a href="games/stickmanhook/index.html" target="_blank"><strong>Stickman Hook</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/1v1lol/index.html" target="_blank">
+					<img src="games/img/1v1lol.png" alt="1v1.lol">
+				</a>
+				<a href="games/1v1lol/index.html" target="_blank"><strong>1v1.lol</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/blockpost/index.html" target="_blank">
+					<img src="games/img/blockpost.png" alt="Blockpost">
+				</a>
+				<a href="games/blockpost/index.html" target="_blank"><strong>Blockpost</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/rocketsoccer/index.html" target="_blank">
+					<img src="games/img/rocketsoccer.png" alt="Rocket Soccer">
+				</a>
+				<a href="games/rocketsoccer/index.html" target="_blank"><strong>Rocket Soccer</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/resentclient/index.html" target="_blank">
+					<img src="games/img/resentclient.png" alt="Resent Client">
+				</a>
+				<a href="games/resentclient/index.html" target="_blank"><strong>Resent Client</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/minecraft/index.html" target="_blank">
+					<img src="games/img/minecraft.png" alt="Minecraft: Classic">
+				</a>
+				<a href="games/minecraft/index.html" target="_blank"><strong>Minecraft: Classic</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/craftmine/index.html" target="_blank">
+					<img src="games/img/craftmine.png" alt="CraftMine">
+				</a>
+				<a href="games/craftmine/index.html" target="_blank"><strong>CraftMine</strong></a>
+			</div>
+			<div class="game-item" id="incomplete">
+				<a href="games/run/run1/index.html" target="_blank">
+					<img src="games/img/run1.png" alt="Run 1">
+				</a>
+				<a href="games/run/run1/index.html" target="_blank"><strong>Run 1</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/run/run2/index.html" target="_blank">
+					<img src="games/img/run2.png" alt="Run 2">
+				</a>
+				<a href="games/run/run2/index.html" target="_blank"><strong>Run 2</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/run/run3/index.html" target="_blank">
+					<img src="games/img/run3.png" alt="Run 3">
+				</a>
+				<a href="games/run/run3/index.html" target="_blank"><strong>Run 3</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/redball4/index.html" target="_blank">
+					<img src="games/img/placeholder.png" alt="Red Ball 4">
+				</a>
+				<a href="games/redball4/index.html" target="_blank"><strong>Red Ball 4</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/supermariobros/index.html" target="_blank">
+					<img src="games/img/supermariobros.png" alt="Super Mario Bros">
+				</a>
+				<a href="games/supermariobros/index.html" target="_blank"><strong>Super Mario Bros</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/subwaysurferssanfransisco/index.html" target="_blank">
+					<img src="games/img/subwaysurferssanfransisco.png" alt="Subway Surfers: San Fransisco">
+				</a>
+				<a href="games/subwaysurferssanfransisco/index.html" target="_blank"><strong>Subway Surfers: San Fransisco</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/subwaysurferszurich/index.html" target="_blank">
+					<img src="games/img/subwaysurferszurich.png" alt="Subway Surfers: Zurich">
+				</a>
+				<a href="games/subwaysurferszurich/index.html" target="_blank"><strong>Subway Surfers: Zurich</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/templerun2/index.html" target="_blank">
+					<img src="games/img/templerun2.png" alt="Temple Run 2">
+				</a>
+				<a href="games/templerun2/index.html" target="_blank"><strong>Temple Run 2</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/drawthehill/index.html" target="_blank">
+					<img src="games/img/drawthehill.png" alt="Draw the Hill">
+				</a>
+				<a href="games/drawthehill/index.html" target="_blank"><strong>Draw the Hill</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/crossyroad/index.html" target="_blank">
+					<img src="games/img/crossyroad.png" alt="Crossy Road">
+				</a>
+				<a href="games/crossyroad/index.html" target="_blank"><strong>Crossy Road</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/cuttherope/index.html" target="_blank">
+					<img src="games/img/cuttherope.png" alt="Cut The Rope">
+				</a>
+				<a href="games/cuttherope/index.html" target="_blank"><strong>Cut The Rope</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/cuttheropetimetravel/index.html" target="_blank">
+					<img src="games/img/cuttheropetimetravel.png" alt="Cut The Rope: Time Travel">
+				</a>
+				<a href="games/cuttheropetimetravel/index.html" target="_blank"><strong>Cut The Rope: Time Travel</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/cuttheropeholidaygift/index.html" target="_blank">
+					<img src="games/img/cuttheropeholidaygift.png" alt="Cut The Rope: Holiday Gift">
+				</a>
+				<a href="games/cuttheropeholidaygift/index.html" target="_blank"><strong>Cut The Rope: Holiday Gift</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/stack/index.html" target="_blank">
+					<img src="games/img/stack.png" alt="Stack">
+				</a>
+				<a href="games/stack/index.html" target="_blank"><strong>Stack</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/paperio2/index.html" target="_blank">
+					<img src="games/img/paperio2.png" alt="Paper.io 2">
+				</a>
+				<a href="games/paperio2/index.html" target="_blank"><strong>Paper.io 2</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/jetpackjoyride/index.html" target="_blank">
+					<img src="games/img/jetpackjoyride.png" alt="Jetpack Joyride">
+				</a>
+				<a href="games/jetpackjoyride/index.html" target="_blank"><strong>Jetpack Joyride</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/fruitninja/index.html" target="_blank">
+					<img src="games/img/fruitninja.png" alt="Fruit Ninja">
+				</a>
+				<a href="games/fruitninja/index.html" target="_blank"><strong>Fruit Ninja</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/bitlife/index.html" target="_blank">
+					<img src="games/img/bitlife.png" alt="BitLife">
+				</a>
+				<a href="games/bitlife/index.html" target="_blank"><strong>BitLife</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/dune/index.html" target="_blank">
+					<img src="games/img/dune.png" alt="Dune">
+				</a>
+				<a href="games/dune/index.html" target="_blank"><strong>Dune</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/paperyplanes/index.html" target="_blank">
+					<img src="games/img/paperyplanes.png" alt="Papery Planes">
+				</a>
+				<a href="games/paperyplanes/index.html" target="_blank"><strong>Papery Planes</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="./launcher.html#pokemonred" target="_blank">
+					<img src="games/img/pokemonfirered.png" alt="Pokemon: Fire Red">
+				</a>
+				<a href="./launcher.html#pokemonred" target="_blank"><strong>Pokémon: Fire Red</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="./launcher.html#pokemonemerald" target="_blank">
+					<img src="games/img/pokemonemerald.png" alt="Pokémon: Emerald">
+				</a>
+				<a href="./launcher.html#pokemonemerald" target="_blank"><strong>Pokémon: Emerald</strong></a>
+			</div>
+			<div class="game-item" id="incomplete">
+				<a href="games/pokemonblack/index.html" target="_blank">
+					<img src="games/img/placeholder.png" alt="Pokémon: Black">
+				</a>
+				<a href="games/pokemonblack/index.html" target="_blank"><strong>Pokémon: Black</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/animalcrossingwildworld/index.html" target="_blank">
+					<img src="games/img/animalcrossingwildworld.png" alt="Animal Crossing: Wild World">
+				</a>
+				<a href="games/animalcrossingwildworld/index.html" target="_blank"><strong>Animal Crossing: Wild World</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/thebindingofisaac/index.html" target="_blank">
+					<img src="games/img/thebindingofisaac.png" alt="The Binding of Isaac">
+				</a>
+				<a href="games/thebindingofisaac/index.html" target="_blank"><strong>The Binding of Isaac</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/superscribblenauts/index.html" target="_blank">
+					<img src="games/img/superscribblenauts.png" alt="Super Scribblenauts">
+				</a>
+				<a href="games/superscribblenauts/index.html" target="_blank"><strong>Super Scribblenauts</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/fnaf/fnaf1/index.html" target="_blank">
+					<img src="games/img/placeholder.png" alt="FNAF 1">
+				</a>
+				<a href="games/fnaf/fnaf1/index.html" target="_blank"><strong>FNAF 1</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/fnaf/fnaf4/index.html" target="_blank">
+					<img src="games/img/fnaf4.png" alt="FNAF 4">
+				</a>
+				<a href="games/fnaf/fnaf4/index.html" target="_blank"><strong>FNAF 4</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/douchebag/douchebaglife/index.html" target="_blank">
+					<img src="games/img/douchebaglife.png" alt="Douchbag Life">
+				</a>
+				<a href="games/douchebag/douchebaglife/index.html" target="_blank"><strong>Douchbag Life</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/douchebag/douchebagworkout2/index.html" target="_blank">
+					<img src="games/img/douchebagworkout2.png" alt="Douchbag Workout 2">
+				</a>
+				<a href="games/douchebag/douchebagworkout2/index.html" target="_blank"><strong>Douchbag Workout 2</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/ducklife/ducklife1/index.html" target="_blank">
+					<img src="games/img/ducklife1.png" alt="Duck Life 1">
+				</a>
+				<a href="games/ducklife/ducklife1/index.html" target="_blank"><strong>Duck Life 1</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/ducklife/ducklife2/index.html" target="_blank">
+					<img src="games/img/ducklife2.png" alt="Duck Life 2">
+				</a>
+				<a href="games/ducklife/ducklife2/index.html" target="_blank"><strong>Duck Life 2</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/ducklife/ducklife3/index.html" target="_blank">
+					<img src="games/img/ducklife3.png" alt="Duck Life 3">
+				</a>
+				<a href="games/ducklife/ducklife3/index.html" target="_blank"><strong>Duck Life 3</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/ducklife/ducklife4/index.html" target="_blank">
+					<img src="games/img/ducklife4.png" alt="Duck Life 4">
+				</a>
+				<a href="games/ducklife/ducklife4/index.html" target="_blank"><strong>Duck Life 4</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/supermario64/index.html" target="_blank">
+					<img src="games/img/supermario64.png" alt="Super Mario 64">
+				</a>
+				<a href="games/supermario64/index.html" target="_blank"><strong>Super Mario 64</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/aceattorney/index.html" target="_blank">
+					<img src="games/img/aceattorney.png" alt="Ace Attorney">
+				</a>
+				<a href="games/aceattorney/index.html" target="_blank"><strong>Ace Attorney</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/learntofly/learntofly1/index.html" target="_blank">
+					<img src="games/img/learntofly1.png" alt="Learn To Fly 1">
+				</a>
+				<a href="games/learntofly/learntofly1/index.html" target="_blank"><strong>Learn To Fly 1</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/learntofly/learntofly2/index.html" target="_blank">
+					<img src="games/img/learntofly2.png" alt="Learn To Fly 2">
+				</a>
+				<a href="games/learntofly/learntofly2/index.html" target="_blank"><strong>Learn To Fly 2</strong></a>
+			</div>
+			<div class="game-item" id="incomplete">
+				<a href="games/learntofly/learntofly3/index.html" target="_blank">
+					<img src="games/img/learntofly3.png" alt="Learn To Fly 3">
+				</a>
+				<a href="games/learntofly/learntofly3/index.html" target="_blank"><strong>Learn To Fly 3</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/motox3m/index.html" target="_blank">
+					<img src="games/img/motox3m.png" alt="MotoX3M">
+				</a>
+				<a href="games/motox3m/index.html" target="_blank"><strong>MotoX3M</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/motox3m2/index.html" target="_blank">
+					<img src="games/img/motox3m2.png" alt="MotoX3M 2">
+				</a>
+				<a href="games/motox3m2/index.html" target="_blank"><strong>MotoX3M 2</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/thereisnogame/index.html" target="_blank">
+					<img src="games/img/thereisnogame.png" alt="There Is No Game">
+				</a>
+				<a href="games/thereisnogame/index.html" target="_blank"><strong>There Is No Game</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/superhot/index.html" target="_blank">
+					<img src="games/img/superhot.png" alt="Superhot">
+				</a>
+				<a href="games/superhot/index.html" target="_blank"><strong>Superhot</strong></a>
+			</div>
+			<div class="game-item" id="incomplete">
+				<a href="games/fireboywatergirl/fireboywatergirl1/index.html" target="_blank">
+					<img src="games/img/fireboywatergirl1.png" alt="Fireboy & Watergirl 1">
+				</a>
+				<a href="games/fireboywatergirl/fireboywatergirl1/index.html" target="_blank"><strong>Fireboy & Watergirl 1</strong></a>
+			</div>
+			<div class="game-item" id="incomplete">
+				<a href="games/fireboywatergirl/fireboywatergirl2/index.html" target="_blank">
+					<img src="games/img/fireboywatergirl2.png" alt="Fireboy & Watergirl 2">
+				</a>
+				<a href="games/fireboywatergirl/fireboywatergirl2/index.html" target="_blank"><strong>Fireboy & Watergirl 2</strong></a>
+			</div>
+			<div class="game-item" id="incomplete">
+				<a href="games/fireboywatergirl/fireboywatergirl3/index.html" target="_blank">
+					<img src="games/img/fireboywatergirl3.png" alt="Fireboy & Watergirl 3">
+				</a>
+				<a href="games/fireboywatergirl/fireboywatergirl3/index.html" target="_blank"><strong>Fireboy & Watergirl 3</strong></a>
+			</div>
+			<div class="game-item" id="incomplete">
+				<a href="games/fireboywatergirl/fireboywatergirl4/index.html" target="_blank">
+					<img src="games/img/fireboywatergirl4.png" alt="Fireboy & Watergirl 4">
+				</a>
+				<a href="games/fireboywatergirl/fireboywatergirl4/index.html" target="_blank"><strong>Fireboy & Watergirl 4</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/happywheels/index.html" target="_blank">
+					<img src="games/img/happywheels.png" alt="Happy Wheels">
+				</a>
+				<a href="games/happywheels/index.html" target="_blank"><strong>Happy Wheels</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="./launcher.html#monopoly" target="_blank">
+					<img src="games/img/monopoly.png" alt="Monopoly">
+				</a>
+				<a href="./launcher.html#monopoly" target="_blank"><strong>Monopoly</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="./launcher.html#spyro_adventure" target="_blank">
+					<img src="games/img/spyroadventure.png" alt="Spyro Adventure">
+				</a>
+				<a href="./launcher.html#spyro_adventure" target="_blank"><strong>Spyro Adventure</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="./launcher.html#super_street_fighter_2_turbo_revival" target="_blank">
+					<img src="games/img/streetfighter2.png" alt="Street Fighter 2">
+				</a>
+				<a href="./launcher.html#super_street_fighter_2_turbo_revival" target="_blank"><strong>Street Fighter 2</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/bloxorz/index.html" target="_blank">
+					<img src="games/img/bloxorz.png" alt="Bloxorz">
+				</a>
+				<a href="games/bloxorz/index.html" target="_blank"><strong>Bloxorz</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/transcube/dist/index.html" target="_blank">
+					<img src="games/img/transcube.png" alt="TransCube">
+				</a>
+				<a href="games/transcube/dist/index.html" target="_blank"><strong>TransCube</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/animatorvsanimation/index.html" target="_blank">
+					<img src="games/img/placeholder.png" alt="Animator Vs Animation">
+				</a>
+				<a href="games/animatorvsanimation/index.html" target="_blank"><strong>Animator Vs Animation</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/portalflash/index.html" target="_blank">
+					<img src="games/img/portalflash.png" alt="Portal: Flash">
+				</a>
+				<a href="games/portalflash/index.html" target="_blank"><strong>Portal: Flash</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/stormthehouse2/index.html" target="_blank">
+					<img src="games/img/stormthehouse2.png" alt="Storm The House 2">
+				</a>
+				<a href="games/stormthehouse2/index.html" target="_blank"><strong>Storm The House 2</strong></a>
+			</div>
+			<div class="game-item">
+				<a href="games/googledino/index.html" target="_blank">
+					<img src="games/img/googledino.png" alt="Google Dino">
+				</a>
+				<a href="games/googledino/index.html" target="_blank"><strong>Google Dino</strong></a>
+			</div>
+			<!--Copy & Paste Empty Slot-->
+			<div class="game-item" id="incomplete">
+				<a href="games/gamePath/index.html" target="_blank">
+					<img src="games/img/placeholder.png" alt="gameName">
+				</a>
+				<a href="games/gamePath/index.html" target="_blank"><strong>gameName</strong></a>
+			</div>
+		</div>
+
+		<!--Ad Segment Start-->
+        <br><center><script>
+			var afg={};afg.u=6328;afg.s=4;
+			document.write("<sc"+"ript src='//js.adforgames.com/cd.js'></sc"+"ript>");
+		</script></center><br>
+		<!--Ad Segment End-->
+		
+		<!--Footer Start-->
+        <footer class="footer">
+			<div class="footer-about">
+			  <p>Welcome to Project Hub, your ultimate destination for tailored unblocked games! With over 60 games and counting, we are committed to providing you with a personalized gaming experience that suits your preferences and interests. Our site is constantly updated with new additions to ensure a fresh and exciting selection of games. We highly value user feedback and actively incorporate it to enhance your gaming journey. Get ready to embark on a thrilling adventure as you explore the world of Project Hub, where every game is tailored to you. Let the fun begin!</p>
+			</div>
+			<p>Christian Santangelo <i class="fa-regular fa-copyright"></i></p>
+			<p>Disclaimer: This site should not be used during school/work, and I am not responsible for the users on this site.</p>
+			<div class="footer-link">
+				<a href="https://github.com/unbl0ck">GitHub Profile</a>
+				<a href="privacy.html">Privacy Notice</a>
+			</div>
+		</footer>
+		<!--Footer End-->
+
+		<!--Anchor Ad Start-->
+		<script>
+			var afg={};afg.u=6328;afg.s=31;
+			afg.anchor="bottom";
+			document.write("<sc"+"ript src='//js.adforgames.com/cd.js'></sc"+"ript>");
+		</script>
+		<!--Anchor Ad End-->
+		
+		<!--AOS Library-->
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+	</body>
+</html>
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Display-->
+        <title>Project-Hub | Contact</title>
+        <link rel="icon" href="favicon.svg">
+        <!--Stylesheets-->
+        <link rel="stylesheet" href="stylesheet.css">
+        <link rel="stylesheet" href="page_styles/contact.css"> <!--Page-Specific-->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+        <link rel="stylesheet" href="hover.css"> <!--Hover.CSS Library-->
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"> <!--AOS Library-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="https://kit.fontawesome.com/4139823eac.js" crossorigin="anonymous"></script>
+        <!--Meta-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Google Analytics-->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9KJ1XPKLF"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-M9KJ1XPKLF');
+        </script>
+        <!--Scripts-->
+		<script src="startupScript.js"></script>
+    </head>
+    <body>
+        <!--Navbar Start-->
+        <div class="nav" style="display: flex;">
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="1100"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='index.html'"
+                style="cursor:pointer"><a>Home</a></button>
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='games.html'"
+                style="cursor:pointer"><a>Games</a></button>
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="900"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='apps.html'"
+                style="cursor:pointer"><a>Apps</a></button>
+            <button class="hvr-underline-from-center active"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="800"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='contact.html'"
+                style="cursor:pointer"><a>Contact</a></button>
+            <div id="mobile-removables">
+                <button class="hvr-underline-from-center"
+                    data-aos="fade-down"
+                    data-aos-delay="50"
+                    data-aos-duration="700"
+                    data-aos-easing="ease-in-out"
+                    data-aos-once="true"
+                    onclick="window.location.href='settings.html'"
+                    style="cursor:pointer"><a>Settings</a></button>
+                <button class="hvr-underline-from-center"
+                    data-aos="fade-down"
+                    data-aos-delay="50"
+                    data-aos-duration="600"
+                    data-aos-easing="ease-in-out"
+                    data-aos-once="true"
+                    onclick="window.location.href='https://github.com/unbl0ck/unbl0ck.github.io'"
+                    style="cursor:pointer"><a>GitHub</a></button>
+            </div>
+        </div>
+		<!--Navbar End-->
+
+        <!--Header Image-->
+        <img src="img/header.png" alt="Image couldn't load." class="img-header" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+        <!--Content-->
+        <div class="email-container">
+            <h2 >Our Official E-Mail Address is:
+                <a href="mailto:project.hub.games@gmail.com?subject=What%20do%20you%20wish%20to%20discuss%3F&body=Please%20put%20in-depth%20what%20you%20are%20wanting%20to%20talk%20about.%20I%20promise%20I%20don't%20bite...%20yet.">project.hub.games@gmail.com</a>
+            </h2>
+            <p>If you see any other email try to contact you, whilst trying to imitate as us, please report them to our email above.</p>
+        </div>
+
+        <center class="form-container">
+            <!--Ad Segment Start-->
+			<script>
+				var afg={};afg.u=6328;afg.s=5;
+				document.write("<sc"+"ript src='//js.adforgames.com/cd.js'></sc"+"ript>");
+			</script>
+            <!--Ad Segment End-->
+            
+            <div class="form-box">
+                <p class="form-title">Game Request</p>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScuv3_LcWKJ-8SJRzdFT48ml4S29DI9up24Bp5CA8FLJA-mnw/viewform?embedded=true"
+                    class="form"
+                    width="100%"
+                    height="800"
+                    frameborder="0"
+                    marginheight="0"
+                    marginwidth="0">Loading…
+                </iframe>
+            </div>
+            <div class="form-box">
+                <p class="form-title">Contact Form</p>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSesfgdrPZu85nHKplMhHl4CKwu9pkjPEfsSNSP3ZE-jkExDuw/viewform?embedded=true"
+                    class="form"
+                    width="100%"
+                    height="800"
+                    frameborder="0"
+                    marginheight="0"
+                    marginwidth="0">Loading…
+                </iframe>
+            </div>
+              
+            <!--Ad Segment Start-->
+			<script>
+				var afg={};afg.u=6328;afg.s=5;
+				document.write("<sc"+"ript src='//js.adforgames.com/cd.js'></sc"+"ript>");
+			</script>
+            <!--Ad Segment End-->
+        </center>
+
+        <!--Footer Start-->
+        <footer class="footer">
+			<div class="footer-about">
+			  <p>Welcome to Project Hub, your ultimate destination for tailored unblocked games! With over 60 games and counting, we are committed to providing you with a personalized gaming experience that suits your preferences and interests. Our site is constantly updated with new additions to ensure a fresh and exciting selection of games. We highly value user feedback and actively incorporate it to enhance your gaming journey. Get ready to embark on a thrilling adventure as you explore the world of Project Hub, where every game is tailored to you. Let the fun begin!</p>
+			</div>
+			<p>Christian Santangelo <i class="fa-regular fa-copyright"></i></p>
+			<p>Disclaimer: This site should not be used during school/work, and I am not responsible for the users on this site.</p>
+			<div class="footer-link">
+				<a href="https://github.com/unbl0ck">GitHub Profile</a>
+				<a href="privacy.html">Privacy Notice</a>
+			</div>
+		</footer>
+        <!--Footer End-->
+        
+        <!--AOS Library-->
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+    </body>
+</html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--Display-->
+		<title>Project-Hub | Apps</title>
+		<link rel="icon" href="favicon.svg">
+		<!--Stylesheets-->
+		<link rel="stylesheet" href="stylesheet.css">
+		<link rel="stylesheet" href="page_styles/apps.css"> <!--Page-Specific-->
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+		<link rel="stylesheet" href="hover.css"> <!--Hover.CSS Library-->
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"> <!--AOS Library-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<script src="https://kit.fontawesome.com/4139823eac.js" crossorigin="anonymous"></script>
+		<!--Meta-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--Google Analytics-->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9KJ1XPKLF"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-M9KJ1XPKLF');
+        </script>
+		<!--Scripts-->
+		<script src="startupScript.js"></script>
+		<!--Styling-->
+		<style>
+			/* Ad Segment */
+			.ad-segment {
+				margin: 1vw;
+			}
+		</style>
+	</head>
+	<body>
+		<!--Navbar Start-->
+        <div class="nav" style="display: flex;">
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="1100"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='index.html'"
+                style="cursor:pointer"><a>Home</a></button>
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='games.html'"
+                style="cursor:pointer"><a>Games</a></button>
+            <button class="hvr-underline-from-center active"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="900"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='apps.html'"
+                style="cursor:pointer"><a>Apps</a></button>
+            <button class="hvr-underline-from-center"
+                data-aos="fade-down"
+                data-aos-delay="50"
+                data-aos-duration="800"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+                onclick="window.location.href='contact.html'"
+                style="cursor:pointer"><a>Contact</a></button>
+            <div id="mobile-removables">
+                <button class="hvr-underline-from-center"
+                    data-aos="fade-down"
+                    data-aos-delay="50"
+                    data-aos-duration="700"
+                    data-aos-easing="ease-in-out"
+                    data-aos-once="true"
+                    onclick="window.location.href='settings.html'"
+                    style="cursor:pointer"><a>Settings</a></button>
+                <button class="hvr-underline-from-center"
+                    data-aos="fade-down"
+                    data-aos-delay="50"
+                    data-aos-duration="600"
+                    data-aos-easing="ease-in-out"
+                    data-aos-once="true"
+                    onclick="window.location.href='https://github.com/unbl0ck/unbl0ck.github.io'"
+                    style="cursor:pointer"><a>GitHub</a></button>
+            </div>
+        </div>
+		<!--Navbar End-->
+
+        <!--Header Image-->
+        <img src="img/header.png" alt="Image couldn't load." class="img-header" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin-bottom: 1vw;">
+
+		<!--Ad Segment Start-->
+        <br><center><script>
+			var afg={};afg.u=6328;afg.s=4;
+			document.write("<sc"+"ript src='//js.adforgames.com/cd.js'></sc"+"ript>");
+		</script></center><br>
+		<!--Ad Segment End-->
+
+        <div class="disclaimer">
+            <h2>Certain apps may NOT be working!</h2>
+            <p>Due to the complexity of these apps, we are unable to host some of them independently. Unfortunately, this means that embedded apps are able to be blocked. If you encounter a blocked app, please use our <a>Contact Page</a> and talk to us about it.</a></p>
+        </div>
+
+		<!--App Library-->
+		<div class="app-grid">
+			<div class="app-item">
+				<a href="apps/chatgpt/index.html" target="_blank">
+					<img src="apps/img/chatgpt.png" alt="ChatGPT">
+				</a>
+				<a class="app-links" href="apps/chatgpt/index.html" target="_blank"><strong>ChatGPT</strong></a>
+			</div>
+            <div class="app-item">
+				<a href="apps/desmos/index.html" target="_blank">
+					<img src="apps/img/desmos.png" alt="Desmos">
+				</a>
+				<a class="app-links" href="apps/desmos/index.html" target="_blank"><strong>Desmos</strong></a>
+			</div>
+            <div class="app-item">
+				<a href="apps/mathway/index.html" target="_blank">
+					<img src="apps/img/mathway.png" alt="Mathway">
+				</a>
+				<a class="app-links" href="apps/mathway/index.html" target="_blank"><strong>Mathway</strong></a>
+			</div>
+            <!--Copy & Paste Empty Slot-->
+            <div class="app-item" id="incomplete">
+				<a href="apps/appPath/index.html" target="_blank">
+					<img src="apps/img/placeholder.png" alt="appName">
+				</a>
+				<a class="app-links" href="apps/gamePath/index.html" target="_blank"><strong>appName</strong></a>
+			</div>
+		</div>
+
+		<!--Ad Segment Start-->
+        <br><center><script>
+			var afg={};afg.u=6328;afg.s=4;
+			document.write("<sc"+"ript src='//js.adforgames.com/cd.js'></sc"+"ript>");
+		</script></center><br>
+		<!--Ad Segment End-->
+		
+		<!--Footer Start-->
+        <footer class="footer">
+			<div class="footer-about">
+			  <p>Welcome to Project Hub, your ultimate destination for tailored unblocked games! With over 60 games and counting, we are committed to providing you with a personalized gaming experience that suits your preferences and interests. Our site is constantly updated with new additions to ensure a fresh and exciting selection of games. We highly value user feedback and actively incorporate it to enhance your gaming journey. Get ready to embark on a thrilling adventure as you explore the world of Project Hub, where every game is tailored to you. Let the fun begin!</p>
+			</div>
+			<p>Christian Santangelo <i class="fa-regular fa-copyright"></i></p>
+			<p>Disclaimer: This site should not be used during school/work, and I am not responsible for the users on this site.</p>
+			<div class="footer-link">
+				<a href="https://github.com/unbl0ck">GitHub Profile</a>
+				<a href="privacy.html">Privacy Notice</a>
+			</div>
+		</footer>
+		<!--Footer End-->
+		
+		<!--AOS Library-->
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+	</body>
+</html>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>1v1.lol</title>
+        <!--Google Analytics-->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9KJ1XPKLF"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-M9KJ1XPKLF');
+        </script>
+        <!--Google Analytics-->
+        <!--Styling-->
+        <style>
+            iframe {
+                position:fixed;
+                top:0;
+                left:0;
+                bottom:0;
+                right:0;
+                width:100%;
+                height:100%;
+                border:none;
+                margin:0;
+                padding:0;
+                overflow:hidden;
+                z-index:999999;
+            }
+        </style>
+    </head>
+    <body>
+        <iframe src="https://docs-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/ko1ov/to@1e8a949f89fcf2b110640c41a0705db01405d161/d7uf4.xml#" width="1920" height="1080"></iframe>
+        <!--Anchor Ad Start-->
+		<script>
+			var afg={};afg.u=6328;afg.s=31;
+			afg.anchor="bottom";
+			document.write("<sc"+"ript src='//js.adforgames.com/cd.js'></sc"+"ript>");
+		</script>
+		<!--Anchor Ad End-->
+    </body>
+</html>
